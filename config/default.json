@@ -1,0 +1,4 @@
+{
+    "mongoURI":"mongodb+srv://Kishan:Kishan123@cluster0-kd4ws.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "sl_myJwtSecret"
+}
