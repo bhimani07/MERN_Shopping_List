@@ -14,7 +14,7 @@ import {
 
 // Check token and load user
 export const loadUser = () => (dispatch, getState) => {
-    //User loading
+    // User loading
     dispatch({ type: USER_LOADING });
 
     axios
@@ -33,7 +33,7 @@ export const loadUser = () => (dispatch, getState) => {
 
 // Login User
 export const login = ({ email, password }) => dispatch => {
-    //Headers
+    // Headers
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -54,8 +54,6 @@ export const login = ({ email, password }) => dispatch => {
         });
 }
 
-
-
 // Logout User
 export const logout = () => {
     return {
@@ -63,7 +61,7 @@ export const logout = () => {
     };
 };
 
-//Register user
+// Register user
 export const register = ({ name, email, password }) => dispatch => {
     //Headers
     const config = {
@@ -71,7 +69,6 @@ export const register = ({ name, email, password }) => dispatch => {
             'Content-Type': 'application/json'
         }
     }
-
     const body = JSON.stringify({ name, email, password });
     axios.post('/api/users', body, config)
         .then(res => dispatch({
@@ -97,12 +94,9 @@ export const tokenConfig = getState => {
             "Content-type": "application/json"
         }
     }
-
     if (token) {
         config.headers['x-auth-token'] = token;
     }
-
     return config;
-
 }
 

@@ -5,11 +5,11 @@ const config = require('config');
 const jwt = require('jsonwebtoken');
 const auth = require('../../middleware/auth');
 
-//Item model
+// Auth model
 const User = require('../../models/User');
 
 // @route   POST api/auth
-// @desc    Authenticate the User 
+// @desc    authenticate the user 
 // @access  Public
 router.post('/', (req, res) => {
     const { email, password } = req.body;
@@ -26,8 +26,8 @@ router.post('/', (req, res) => {
             //Validate Password
             bcrypt.compare(password, user.password)
                 .then(isMatch => {
-                    if(!isMatch) return res.status(400).json({ msg: "Invalid Credentials "});
-                    
+                    if (!isMatch) return res.status(400).json({ msg: "Invalid Credentials " });
+
                     jwt.sign(
                         { id: user.id },
                         config.get('jwtSecret'),
@@ -44,12 +44,12 @@ router.post('/', (req, res) => {
                             })
                         }
                     )
-                })           
+                })
         });
 });
 
 // @route   GET api/auth/user
-// @desc    Get user data 
+// @desc    get user data 
 // @access  Private
 router.get('/user', auth, (req, res) => {
     User.findById(req.user.id)

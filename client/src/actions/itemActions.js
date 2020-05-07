@@ -18,7 +18,6 @@ export const getItems = () => dispatch => {
 };
 
 export const addItem = item => (dispatch, getState) => {
-
     axios
         .post('/api/items', item, tokenConfig(getState))
         .then(res =>
@@ -27,8 +26,6 @@ export const addItem = item => (dispatch, getState) => {
                 payload: res.data
             }))
         .catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
-
-
 };
 
 export const deleteItem = id => (dispatch, getState) => {
